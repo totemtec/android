@@ -11,12 +11,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.demo.compose.ui.theme.ComposeTheme
@@ -114,6 +117,9 @@ fun HelloContent4(name: String, onNameChanged: (String) -> Unit) {
 
 
 class HelloViewModel : ViewModel() {
+//    private val _name = MutableLiveData("")
+//    val name: LiveData<String> = _name
+
     private val _name = MutableStateFlow("")
     val name: StateFlow<String> = _name
 
@@ -124,6 +130,10 @@ class HelloViewModel : ViewModel() {
 
 @Composable
 fun HelloScreen5(helloViewModel: HelloViewModel = viewModel()) {
+
+    // need implementation "androidx.compose.runtime:runtime-livedata"
+//     val name by helloViewModel.name.observeAsState("")
+
     val name by helloViewModel.name.collectAsState()
     HelloContent4(name, onNameChanged = { helloViewModel.onNameChanged(it) })
 }
