@@ -1,7 +1,12 @@
 package com.demo.compose.state
 
+import kotlinx.coroutines.delay
+
+
 class NewsRepository {
-    fun newsItemsForCategory(category: String): List<NewsItemUiState> {
+    suspend fun newsItemsForCategory(category: String): List<NewsItemUiState> {
+        delay(3000)
+
         return listOf(
             NewsItemUiState(1, "title 1", "body 1"),
             NewsItemUiState(2, "title 2", "body 2"),
@@ -11,6 +16,7 @@ class NewsRepository {
     }
 
     fun latestNews(): List<NewsItemUiState> {
+
         return listOf(
             NewsItemUiState(1, "title 1", "body 1"),
             NewsItemUiState(2, "title 2", "body 2"),

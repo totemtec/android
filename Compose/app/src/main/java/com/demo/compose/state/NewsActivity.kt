@@ -36,7 +36,7 @@ fun NewsScreen(
     Box(modifier.fillMaxSize()) {
 
         if (viewModel.uiState.isFetchingArticles) {
-            CircularProgressIndicator(Modifier.align(Alignment.Center))
+            CircularProgressIndicator(Modifier.align(Alignment.TopCenter))
         }
 
         LazyColumn {

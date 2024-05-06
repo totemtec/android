@@ -1,9 +1,6 @@
 package com.demo.compose.state
 
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
-import androidx.lifecycle.createSavedStateHandle
-import androidx.lifecycle.viewmodel.CreationExtras
+
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -37,8 +34,12 @@ public class NewsViewModel(
     private val repository: NewsRepository = NewsRepository()
 ) : ViewModel() {
 
-    var uiState by mutableStateOf(NewsUiState())
+    var uiState by mutableStateOf(NewsUiState(isFetchingArticles = true))
         private set
+
+    init {
+        fetchArticles("")
+    }
 
     private var fetchJob: Job? = null
 
@@ -47,11 +48,11 @@ public class NewsViewModel(
         fetchJob = viewModelScope.launch {
             try {
                 val newsItems = repository.newsItemsForCategory(category)
-                uiState = uiState.copy(newsItems = newsItems)
+                uiState = uiState.copy(newsItems = newsItems, isFetchingArticles = false)
             } catch (ioe: IOException) {
                 // Handle the error and notify the UI when appropriate.
                 val messages = listOf(Message(ioe.message ?: ioe.javaClass.simpleName))
-                uiState = uiState.copy(userMessages = messages)
+                uiState = uiState.copy(userMessages = messages, isFetchingArticles = false)
             }
         }
     }
