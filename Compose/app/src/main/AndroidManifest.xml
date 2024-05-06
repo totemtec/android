@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Compose"
         tools:targetApi="31">
         <activity
-            android:name=".state.SimpleStateActivity"
+            android:name=".state.NewsActivity"
             android:exported="true"
             android:theme="@style/Theme.Compose" >
             <intent-filter>
@@ -25,15 +25,18 @@
         </activity>
 
         <activity
-            android:name=".WebViewActivity"
+            android:name=".state.SimpleStateActivity"
             android:exported="true"
-            android:label="@string/title_activity_web_view"
             android:theme="@style/Theme.Compose">
 
         </activity>
         <activity
+            android:name=".WebViewActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Compose" />
+        <activity
             android:name=".DialogActivity"
-            android:theme="@style/Theme.Compose"></activity>
+            android:theme="@style/Theme.Compose" />
         <activity android:name=".navigation.GardenActivity" />
         <activity android:name=".navigation.NavigationActivity" />
         <activity android:name=".SnackbarActivity" />

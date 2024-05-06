@@ -89,6 +89,7 @@ class CustomWebViewClient: WebViewClient(){
         return false
     }
 
+    @Deprecated("Deprecated in Java")
     override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
         Log.e("COMPOSE", "request url = $url")
         if (url.contains("weibo.cn")) {
