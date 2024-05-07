@@ -36,18 +36,23 @@
             android:theme="@style/Theme.Compose" />
         <activity
             android:name=".DialogActivity"
+            android:exported="true"
             android:theme="@style/Theme.Compose" />
+
         <activity android:name=".navigation.GardenActivity" />
         <activity android:name=".navigation.NavigationActivity" />
-        <activity android:name=".SnackbarActivity" />
-        <activity android:name=".TextFieldActivity" />
-        <activity android:name=".ConstraintLayoutActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ColumnActivity" />
-        <activity android:name=".RowActivity" />
-        <activity android:name=".BoxActivity" />
-        <activity android:name=".TextActivity" />
-        <activity android:name=".ButtonActivity" />
+
+        <activity android:name=".SnackbarActivity"
+            android:exported="true"/>
+
+        <activity android:name=".TextFieldActivity" android:exported="true"/>
+        <activity android:name=".ConstraintLayoutActivity" android:exported="true"/>
+        <activity android:name=".MainActivity" android:exported="true"/>
+        <activity android:name=".ColumnActivity" android:exported="true"/>
+        <activity android:name=".RowActivity" android:exported="true"/>
+        <activity android:name=".BoxActivity" android:exported="true"/>
+        <activity android:name=".TextActivity" android:exported="true"/>
+        <activity android:name=".ButtonActivity" android:exported="true"/>
     </application>
 
 </manifest>

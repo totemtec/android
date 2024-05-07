@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
@@ -42,15 +43,15 @@ fun SnackbarDemo() {
             SnackbarHost(hostState = snackbarHostState)
         },
         floatingActionButton = {
-            ExtendedFloatingActionButton(
-                text = { Text("Show Snackbar") },
-                icon = { Icon(Icons.Filled.Favorite, contentDescription = "") },
+            FloatingActionButton(
                 onClick = {
                     scope.launch {
                         snackbarHostState.showSnackbar("This is a Snackbar")
                     }
                 }
-            )
+            ) {
+                Icon(Icons.Filled.Favorite, contentDescription = "")
+            }
         }
     ) { contentPadding ->
         Text(text = "Content", Modifier.padding(contentPadding))
@@ -66,17 +67,14 @@ fun SnackbarWithActionDemo() {
             SnackbarHost(hostState = snackbarHostState)
         },
         floatingActionButton = {
-            ExtendedFloatingActionButton(
-                text = { Text("Show snackbar") },
-                icon = { Icon(Icons.Filled.Favorite, contentDescription = "") },
+            FloatingActionButton(
                 onClick = {
                     scope.launch {
                         val result = snackbarHostState
                             .showSnackbar(
                                 message = "This is a Snackbar",
                                 actionLabel = "Delete",
-                                // Defaults to SnackbarDuration.Short
-                                duration = SnackbarDuration.Indefinite
+                                withDismissAction = true
                             )
                         when (result) {
                             SnackbarResult.ActionPerformed -> {
@@ -89,7 +87,9 @@ fun SnackbarWithActionDemo() {
                         }
                     }
                 }
-            )
+            ) {
+                Icon(Icons.Filled.Favorite, contentDescription = "")
+            }
         }
     ) { contentPadding ->
         Text(text = "Content", Modifier.padding(contentPadding))
