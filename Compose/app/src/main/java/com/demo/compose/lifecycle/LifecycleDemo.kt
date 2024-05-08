@@ -27,14 +27,17 @@ fun LifecycleDemo() {
     Log.i("COMPOSE", "composition")
 
     LaunchedEffect(Unit) {
-        Log.i("COMPOSE", "onActive()")
+        Log.i("COMPOSE", "LaunchedEffect()")
         request()
     }
 
     DisposableEffect(Unit) {
-        Log.i("COMPOSE", "DisposableEffect()")
+
+        Log.i("COMPOSE", "DisposableEffect() like onActive() can do init work, call before LaunchedEffect()")
+
+
         onDispose {
-            Log.i("COMPOSE", "onDispose()")
+            Log.i("COMPOSE", "onDispose() cleaning")
         }
     }
 
