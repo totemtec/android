@@ -36,7 +36,7 @@ class SnackbarActivity : ComponentActivity() {
 
 @Composable
 fun SnackbarDemo() {
-    val scope = rememberCoroutineScope()
+    val coroutineScope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     Scaffold(
         snackbarHost = {
@@ -45,7 +45,7 @@ fun SnackbarDemo() {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    scope.launch {
+                    coroutineScope.launch {
                         snackbarHostState.showSnackbar("This is a Snackbar")
                     }
                 }
@@ -60,7 +60,7 @@ fun SnackbarDemo() {
 
 @Composable
 fun SnackbarWithActionDemo() {
-    val scope = rememberCoroutineScope()
+    val coroutineScope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     Scaffold(
         snackbarHost = {
@@ -69,7 +69,7 @@ fun SnackbarWithActionDemo() {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    scope.launch {
+                    coroutineScope.launch {
                         val result = snackbarHostState
                             .showSnackbar(
                                 message = "This is a Snackbar",

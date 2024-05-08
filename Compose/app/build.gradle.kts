@@ -52,6 +52,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
     ksp(libs.hilt.android.compiler)
 
     implementation(libs.androidx.core.ktx)

@@ -24,7 +24,6 @@ class ButtonActivity: ComponentActivity() {
             ButtonExample()
         }
     }
-
 }
 
 @OptIn(ExperimentalLayoutApi::class)
