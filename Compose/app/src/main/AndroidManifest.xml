@@ -24,15 +24,8 @@
             </intent-filter>
         </activity>
 
-
-
         <activity
-            android:name=".lifecycle.SideEffectsActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Compose" />
-
-        <activity
-            android:name=".lifecycle.LifecycleStateActivity"
+            android:name=".viewmodels.SavedStateActivity"
             android:exported="true"
             android:theme="@style/Theme.Compose" />
 
