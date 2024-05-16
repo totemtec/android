@@ -65,8 +65,13 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material)
+//    implementation(libs.androidx.material)
     implementation(libs.androidx.material3)
+//    {
+//        version {
+//            strictly("1.3.0-beta01")
+//        }
+//    }
     implementation(libs.androidx.compose.runtime.livedata)
     implementation(libs.coil.kt.compose)
     implementation(libs.androidx.navigation.compose)
