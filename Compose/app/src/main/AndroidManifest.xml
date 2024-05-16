@@ -25,6 +25,16 @@
         </activity>
 
         <activity
+            android:name=".ui.PullRefreshActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Compose" />
+
+        <activity
+            android:name=".ui.DrawerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Compose" />
+
+        <activity
             android:name=".viewmodels.SavedStateActivity"
             android:exported="true"
             android:theme="@style/Theme.Compose" />
