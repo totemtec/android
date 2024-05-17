@@ -16,10 +16,12 @@
 
 package com.demo.compose.ui.pulltofresh
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -57,16 +59,29 @@ private fun GalleryScreen(
         val pullToRefreshState = rememberPullToRefreshState()
 
         if (pullToRefreshState.isRefreshing) {
-            onPullToRefresh()
+            LaunchedEffect(Unit) {
+                onPullToRefresh()
+            }
         }
 
         val uiState = uiStateFlow.collectAsState(UiState(false, emptyList()))
 
+        Log.w("COMPOSE", "uiState.value.isRefreshing = ${uiState.value.isRefreshing}")
+
         LaunchedEffect(uiState.value.isRefreshing) {
+            Log.w("COMPOSE", "LaunchedEffect(uiState.value.isRefreshing)")
             // uiState.value.isRefreshing 发生了变化，并且是变成了不是在刷新
             if (!uiState.value.isRefreshing) {
+                Log.w("COMPOSE", "endRefresh()")
                 pullToRefreshState.endRefresh()
             }
+        }
+
+        LaunchedEffect(Unit) {
+            // 第一次进来开始刷新数据
+            Log.w("COMPOSE", "LaunchedEffect(Unit)")
+            pullToRefreshState.startRefresh()
+            onPullToRefresh()
         }
 
         Box(
@@ -76,7 +91,7 @@ private fun GalleryScreen(
         ) {
             LazyColumn(Modifier.fillMaxSize()) {
                 items(uiState.value.dataList) {
-                    Text(it, Modifier.height(60.dp))
+                    Text(it, Modifier.height(60.dp).size(40.dp))
                 }
             }
 

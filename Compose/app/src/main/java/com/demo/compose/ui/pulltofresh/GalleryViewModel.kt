@@ -15,7 +15,7 @@ class GalleryViewModel: ViewModel() {
     val uiState = _uiState.asStateFlow()
 
     init {
-        refreshData()
+//        refreshData()
     }
 
     fun refreshData() {
