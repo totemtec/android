@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -40,17 +39,17 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun GalleryScreen(
-    viewModel: GalleryViewModel = viewModel(),
+fun PullToRefreshScreen(
+    viewModel: PullToRefreshViewModel = viewModel(),
 ) {
-    GalleryScreen(
+    PullToRefreshScreen(
         uiStateFlow = viewModel.uiState,
         onPullToRefresh = viewModel::refreshData,
     )
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun GalleryScreen(
+private fun PullToRefreshScreen(
     uiStateFlow: StateFlow<UiState>,
     onPullToRefresh: () -> Unit,
 ) {
@@ -91,7 +90,7 @@ private fun GalleryScreen(
         ) {
             LazyColumn(Modifier.fillMaxSize()) {
                 items(uiState.value.dataList) {
-                    Text(it, Modifier.height(60.dp).size(40.dp))
+                    Text(it, Modifier.height(60.dp))
                 }
             }
 

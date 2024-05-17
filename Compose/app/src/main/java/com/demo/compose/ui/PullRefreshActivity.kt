@@ -5,14 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.demo.compose.ui.pulltofresh.GalleryScreen
+import com.demo.compose.ui.pulltofresh.PullToRefreshScreen
+import com.demo.compose.ui.pulltofresh.PullToFreshBasic
 
 class PullRefreshActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 //            PullToFreshBasic()
-            GalleryScreen()
+            PullToRefreshScreen()
         }
     }
 }
@@ -21,7 +22,7 @@ class PullRefreshActivity: ComponentActivity() {
 @Composable
 fun PullRefreshScreen() {
 //    PullToFreshBasic()
-    GalleryScreen()
+    PullToRefreshScreen()
 }
 
 

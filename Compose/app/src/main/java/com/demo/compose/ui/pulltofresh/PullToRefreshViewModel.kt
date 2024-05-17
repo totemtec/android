@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 data class UiState (val isRefreshing: Boolean, val dataList: List<String>)
 
-class GalleryViewModel: ViewModel() {
+class PullToRefreshViewModel: ViewModel() {
 
     private val _uiState = MutableStateFlow<UiState>(UiState(false, emptyList()))
     val uiState = _uiState.asStateFlow()
