@@ -53,6 +53,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose.android)
+    implementation(libs.androidx.paging.compose.android)
     ksp(libs.hilt.android.compiler)
 
     implementation(libs.androidx.core.ktx)
