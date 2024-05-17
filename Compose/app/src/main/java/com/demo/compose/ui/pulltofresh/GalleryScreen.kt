@@ -18,6 +18,7 @@ package com.demo.compose.ui.pulltofresh
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -32,6 +33,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.StateFlow
 
@@ -58,11 +60,10 @@ private fun GalleryScreen(
             onPullToRefresh()
         }
 
-//        val uiState = uiStateFlow.collectAsStateWithLifecycle(UiState(false, emptyList()))
         val uiState = uiStateFlow.collectAsState(UiState(false, emptyList()))
 
-
-        LaunchedEffect(pullToRefreshState.isRefreshing) {
+        LaunchedEffect(uiState.value.isRefreshing) {
+            // uiState.value.isRefreshing 发生了变化，并且是变成了不是在刷新
             if (!uiState.value.isRefreshing) {
                 pullToRefreshState.endRefresh()
             }
@@ -75,7 +76,7 @@ private fun GalleryScreen(
         ) {
             LazyColumn(Modifier.fillMaxSize()) {
                 items(uiState.value.dataList) {
-                    Text(it)
+                    Text(it, Modifier.height(60.dp))
                 }
             }
 

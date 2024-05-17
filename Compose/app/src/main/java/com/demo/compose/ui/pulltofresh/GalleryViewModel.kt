@@ -29,7 +29,7 @@ class GalleryViewModel: ViewModel() {
                 delay(3000)
                 _uiState.value = _uiState.value.copy(
                     isRefreshing = false,
-                    dataList = listOf((0..10).random().toString(), "2", "3", "4", "5", "2", "3", "4", "5", "2", "3", "4", "5")
+                    dataList = listOf((10..20).random().toString(), "2", "3", "4", "5", "2", "3", "4", "5", "2", "3", "4", "5")
                 )
 
             } catch (e: Exception) {
